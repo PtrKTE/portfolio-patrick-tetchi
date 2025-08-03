@@ -1,0 +1,5 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="92" fill="#131319" stroke="#d3c6ac" stroke-width="8"></circle>
+  <text x="62" y="125" fill="#d3c6ac" font-size="82" font-family="Montserrat, Arial, sans-serif" font-weight="300" letter-spacing="10">P</text>
+  <text x="105" y="123" fill="#d3c6ac" font-size="78" font-family="Montserrat, Arial, sans-serif" font-weight="300" letter-spacing="5">T</text>
+</svg>
