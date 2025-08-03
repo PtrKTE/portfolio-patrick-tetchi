@@ -3,35 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Tchimou Patrick Franklin TETCHI</title>
+  <title>Portfolio | Patrick TETCHI</title>
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/75a1bc0a87.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="css/index.css">
   <link rel="icon" href="img/iconpt.svg" type="image/svg+xml">
-
-
-  
 </head>
+
 <body>
-<header>
-  <img src="img/logopt.svg" alt="Photo de Patrick Tetchi" />
-  <h1>Tchimou Patrick Franklin TETCHI</h1>
-  <h3>Responsable Informatique & Chef de Projet Digital</h3>
+<!-- HERO HEADER CENTRE -->
+<header class="hero-header">
+    <span class="logo-pt logo-pt-glow">
+      <img src="img/logopt.svg" alt="Logo PT" />
+    </span>
+  <h1>Patrick TETCHI</h1>
+  <h3 class="job-title">Responsable Informatique & Chef de Projet Digital</h3>
   <div class="contact-links">
     <a href="mailto:patrick.tetchi@outlook.com"><i class="fas fa-envelope"></i> E-mail</a>
     <a href="tel:+2250708656165"><i class="fas fa-phone"></i> Téléphone</a>
     <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
   </div>
 </header>
-<nav>
-  <a href="#apropos" class="active">À propos</a>
-  <a href="#competences">Compétences</a>
-  <a href="#xp">Expériences</a>
-  <a href="#realisations">Réalisations Web</a>
-  <a href="#formation">Formation</a>
-  <a href="#temoignages">Témoignage</a>
-  <a href="#contact">Contact</a>
+
+<!-- NAVIGATION sticky (en dehors du header, collée dessous sur desktop/tablette) -->
+<nav class="main-nav" id="mainNav">
+  <button class="menu-toggle" id="menuToggle" aria-label="Ouvrir le menu" aria-expanded="false">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#apropos">À propos</a></li>
+    <li><a href="#competences">Compétences</a></li>
+    <li><a href="#xp">Expériences</a></li>
+    <li><a href="#realisations">Réalisations Web</a></li>
+    <li><a href="#formation">Formation</a></li>
+    <li><a href="#temoignages">Témoignage</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
+
 <div class="container">
   <section id="apropos">
     <h2>À propos</h2>
@@ -90,7 +101,7 @@
         <div class="row-portfolio">
         <!-- 1. Mozaik Design CI -->
         <div class="webcard">
-            <img class="preview-img" src="img/mozaik.png" alt="Mozaik Design CI" data-modal="img/mozaik.png">
+            <img class="preview-img" src="img/Mozaik.png" alt="Mozaik Design CI" data-modal="img/Mozaik.png">
             <h3>Mozaik Design CI</h3>
             <p>
             <b>Architecture d’intérieur & d’extérieur sur-mesure</b><br>
@@ -194,19 +205,54 @@
   </section>
 </div>
 <script>
-// Nav active selon scroll
-const navLinks = document.querySelectorAll('nav a');
-window.addEventListener('scroll', () => {
-    let fromTop = window.scrollY + 67;
-    navLinks.forEach(link => {
-        let section = document.querySelector(link.getAttribute('href'));
-        if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-        }
-    });
+// ----------- NAVIGATION BURGER + SCROLLSPY --------------
+
+// Sélecteurs adaptés à ta nav principale sticky
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+// Ouvre/ferme le menu burger en mobile
+menuToggle.onclick = function() {
+  navLinks.classList.toggle('open');
+  menuToggle.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', navLinks.classList.contains('open'));
+};
+
+// Ferme menu si resize desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 900) {
+    navLinks.classList.remove('open');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', false);
+  }
 });
-//Modal
+
+// Ferme menu au clic sur un lien (mobile UX)
+document.querySelectorAll('#navLinks a').forEach(link => {
+  link.onclick = () => {
+    navLinks.classList.remove('open');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', false);
+  };
+});
+
+// ----------- SCROLLSPY (nav active selon section visible) --------------
+
+// Sélecteur de liens dans la nav sticky
+const sectionLinks = document.querySelectorAll('#navLinks a');
+window.addEventListener('scroll', () => {
+  // Offset = hauteur de ta nav sticky + header (adapte si besoin !)
+  let fromTop = window.scrollY + 88;
+  sectionLinks.forEach(link => {
+    let section = document.querySelector(link.getAttribute('href'));
+    if (section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop) {
+      sectionLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    }
+  });
+});
+
+// ----------- MODAL IMAGES (inchangé) --------------
 document.querySelectorAll('.preview-img').forEach(img => {
   img.addEventListener('click', function() {
     const modalImg = document.getElementById('modal-img');
@@ -228,7 +274,8 @@ document.getElementById('modal').onclick = function(e) {
     document.body.style.overflow = '';
   }
 };
-//Webcard
+
+// ----------- Animation apparitions des cartes (inchangé) --------------
 function showCardsOnScroll() {
   document.querySelectorAll('.webcard').forEach(card => {
     const rect = card.getBoundingClientRect();
