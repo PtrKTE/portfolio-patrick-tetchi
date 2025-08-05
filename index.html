@@ -98,10 +98,61 @@
   <section id="realisations">
   <h2>Réalisations Web</h2>
   <div class="web-portfolio">
+    <!-- Fidelity – Application de Gestion de Fidélité pour Institut de Beauté -->
+        <div class="project-wide-block">
+          <div class="project-header">
+            <img src="img/fidelity.png" alt="Fidelity App" class="project-main-img" />
+            <div>
+              <h3>Fidelity – Application de Gestion de Fidélité pour Institut de Beauté</h3>
+              <span class="project-tag">Projet complet • 2024</span>
+            </div>
+          </div>
+          <div class="project-content">
+            <h4>Contexte & Objectifs</h4>
+            <p>
+              Dans le cadre de la digitalisation des instituts de beauté, j’ai réalisé une application complète de gestion de fidélité pour optimiser la relation client et automatiser le suivi des prestations et avantages.
+            </p>
+            <h4>Fonctionnalités principales</h4>
+            <ul>
+              <li>Gestion complète des clientes (création, modification, suppression)</li>
+              <li>Génération automatique de cartes de fidélité personnalisées avec code-barres</li>
+              <li>Enregistrement et suivi détaillé des prestations réalisées (date, montant, institut, taux de réduction, caissière)</li>
+              <li>Gestion multi-utilisateurs avec trois niveaux de droits : Super admin, Admin, Agent recenseur</li>
+              <li>Statistiques dynamiques et tableaux de bord personnalisés selon le rôle utilisateur (graphiques, filtres)</li>
+              <li>Export des données au format PDF et Excel</li>
+              <li>Suivi complet des actions utilisateur (logs/audit trail)</li>
+              <li>Interface responsive adaptée aux tablettes et ordinateurs</li>
+              <li>Sécurité renforcée : authentification, gestion des sessions, restrictions d’accès</li>
+            </ul>
+            <h4>Technologies utilisées</h4>
+            <ul class="project-tech-list">
+              <li><b>Backend :</b> PHP, MySQL</li>
+              <li><b>Frontend :</b> JavaScript, Bootstrap</li>
+              <li><b>Outils complémentaires :</b> Génération PDF, Barcodes, Chart.js</li>
+            </ul>
+            <h4>Résultat</h4>
+            <p>
+              L’application déployée a permis de digitaliser les processus de fidélité, d’offrir une meilleure expérience aux clientes, et d’optimiser le pilotage des activités pour les responsables d’institut.
+            </p>
+            <button class="gallery-btn" onclick="openGalleryModal()">Voir la galerie</button>
+          </div>
+        </div>
+
+        <!-- Modal Galerie Fidelity -->
+        <div id="fidelityModal" class="gallery-modal">
+          <span class="close" onclick="closeGalleryModal()">&times;</span>
+          <div class="gallery-content">
+            <img src="img/fidelity-capture1.png" alt="Capture 1" />
+            <img src="img/fidelity-capture2.png" alt="Capture 2" />
+            <img src="img/fidelity-capture3.png" alt="Capture 3" />
+            <!-- Ajoute ici d'autres <img> pour ta galerie -->
+          </div>
+        </div>
+
         <div class="row-portfolio">
         <!-- 1. Mozaik Design CI -->
         <div class="webcard">
-            <img class="preview-img" src="img/mozaik.png" alt="Mozaik Design CI" data-modal="img/mozaik.png">
+            <img class="preview-img" src="img/Mozaik.png" alt="Mozaik Design CI" data-modal="img/Mozaik.png">
             <h3>Mozaik Design CI</h3>
             <p>
             <b>Architecture d’intérieur & d’extérieur sur-mesure</b><br>
@@ -150,7 +201,7 @@
         </div>
         <!-- 5. Cordon Bleu WebTV -->
         <div class="webcard">
-            <img class="preview-img" src="img/c_webtv.png" alt="Cordon Bleu WebTV" data-modal="img/c_webtv.png">
+            <img class="preview-img" src="img/c_webtv.png" alt="Cordon Bleu WebTV" data-modal="img/c_webtv.png>
             <h3>Cordon Bleu WebTV</h3>
             <p>
             <b>Première web-culinaire en Côte d’Ivoire</b><br>
@@ -162,6 +213,7 @@
         </div>
         </div>
     </div>
+
         <!-- Modal d'image (Lightbox) -->
         <div id="modal" style="display:none;position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(10,10,10,0.96);align-items:center;justify-content:center;z-index:1000;">
             <span id="closeModal" style="position:absolute;top:32px;right:60px;font-size:3rem;color:#fff;cursor:pointer;z-index:1200;">&times;</span>
@@ -285,6 +337,15 @@ function showCardsOnScroll() {
 }
 window.addEventListener('scroll', showCardsOnScroll);
 window.addEventListener('DOMContentLoaded', showCardsOnScroll);
+
+// ----------- Modal App --------------
+function openGalleryModal() {
+  document.getElementById('fidelityModal').style.display = 'flex';
+}
+function closeGalleryModal() {
+  document.getElementById('fidelityModal').style.display = 'none';
+}
+
 </script>
 </body>
 </html>
